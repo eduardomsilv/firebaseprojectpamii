@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        
+        <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyC-pmh_TAcPCk1womniFFUX9ls8PwrneUc",
+            authDomain: "fir-project-2f0d8.firebaseapp.com",
+            projectId: "fir-project-2f0d8",
+            storageBucket: "fir-project-2f0d8.appspot.com",
+            messagingSenderId: "869219280458",
+            appId: "1:869219280458:web:a346b359c237db00e228b3",
+            measurementId: "G-P6C96XV4ZQ"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+          var db = firebase.firestore();
+          
+          function salvar() {
+                let usuario = {};
+                let nomeloginInformado = document.getElementById("nomedelogin").value;
+                usuario.nomedelogin = nomeloginInformado;
+
+          db.collection("usuarios").add(usuario)
+
+            .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            })
+            
+            .catch((error) => {
+            console.error("Error adding document: ", error);
+            });
+        
+            }
+          
+          
+        </script>
+    <title>Firebase Proj PAMII</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+
+    <form >
+        Nome:  
+        <input type="text" id="nomecompleto"></input><br><br>
+
+        Login: 
+        <input type="text" id="nomedelogin"></input><br><br>
+
+        Senha: 
+        <input type="text" id="senha"></input>
+    </form>
+    
+    <br><br>
+
+    <button type="button" onclick="salvar()">Enviar</button>
+
+
+</body>
+</html>
